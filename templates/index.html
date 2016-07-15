@@ -13,6 +13,26 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}"/>
+
+    <script>
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:5000/api/users/3000",
+            "method": "GET",
+            "headers": {
+                "cache-control": "max-age=3600",
+            }
+        }
+
+        // Print list of SSIDs
+        $.ajax(settings).done(function(response){
+            response.forEach(function(currentValue){
+                    $('.marketing .col-lg-6').append('<p>' + currentValue.fname + ' ' + currentValue.lname + '</p>');
+                console.log(currentValue);
+            });
+        });
+    </script>
 </head>
 
 
@@ -20,30 +40,16 @@
 
 <div class="container">
     <div class="header">
-        <nav>
-            <ul class="nav nav-pills pull-right">
-                <li role="presentation" class="active"><a href="#">Home</a>
-                </li>
-                <li role="presentation"><a href="#">Sign In</a>
-                </li>
-                <li role="presentation"><a href="#">Sign Up</a>
-                </li>
-            </ul>
-        </nav>
         <h3 class="text-muted">Python Flask App</h3>
     </div>
 
     <div class="jumbotron">
-        <h1>Bucket List App</h1>
-        <p class="lead"></p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">This is a Demo</a>
-        </p>
+        <h1>Flask API Demo</h1>
     </div>
 
     <div class="row marketing">
         <div class="col-lg-6">
             <h4>Welcome to this Demo</h4>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
         </div>
     </div>
 
